@@ -1,0 +1,133 @@
+/* src/app/member/member.scss */
+
+.member-section {
+  padding: 80px 50px;
+  background-color: #000000;
+}
+
+.member-section .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 50px;
+}
+
+.content-left {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.content-left h2 {
+  font-size: 40px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.content-left p {
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.read-more-button {
+  background-color: #000;
+  color: #000000;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.read-more-button:hover {
+  background-color: #e4e4e4;
+}
+
+.image-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.member-image-bg {
+
+  width: 500px;
+  height: 350px;
+  background-image: url('../../assets/Fortree.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments for Member Section */
+@media (max-width: 992px) {
+  .member-section .container {
+    gap: 30px;
+  }
+  .content-left h2 {
+    font-size: 35px;
+  }
+  .content-left p {
+    font-size: 16px;
+  }
+  .member-image-bg {
+    width: 400px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .member-section {
+    padding: 50px 20px;
+  }
+  .member-section .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .content-left {
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+
+  .image-right {
+    justify-content: center;
+    width: 100%; /* ให้ image-right กว้างเต็มพื้นที่ เพื่อให้ member-image-bg ข้างในมีพื้นที่ขยาย */
+  }
+
+  .member-image-bg {
+    width: 100%; /* สำคัญ: ให้ div นี้ขยายเต็มความกว้างของ image-right */
+    max-width: 450px; /* กำหนด max-width เพื่อไม่ให้ใหญ่เกินไปบนแท็บเล็ต */
+    height: 280px; /* กำหนด height ให้คงที่ */
+    /* ถ้ายังหายไป ลองเพิ่ม min-height หรือกำหนด height เป็นอัตราส่วน padding-bottom hacks */
+  }
+}
+
+@media (max-width: 480px) {
+  .content-left h2 {
+    font-size: 30px;
+  }
+  .content-left p {
+    font-size: 15px;
+  }
+  .read-more-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  .member-image-bg {
+    height: 220px;
+    /* ในบางกรณี ถ้า height: auto; ไม่ทำงาน อาจจะต้องใช้ min-height: 220px; */
+    /* หรือใช้ padding-bottom hack เพื่อรักษาอัตราส่วนภาพ: */
+    /* width: 100%; */
+    /* padding-bottom: 60%; */ /* เช่น 350px / 500px = 0.7 = 70% หรือ 220px / 480px = 0.45 = 45% */
+    /* height: 0; */
+  }
+}

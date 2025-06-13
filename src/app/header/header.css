@@ -1,0 +1,82 @@
+/* src/app/header/header.scss */
+
+.main-header {
+  background-color: #000;
+  color: #fff;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  position: relative;
+  z-index: 1000;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo-background-image {
+  width: 60px; 
+  height: 50px;
+  background-image: url('../../assets/logo.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-nav li {
+  margin-left: 30px;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #ccc;
+}
+
+/* Responsive for Header */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 15px 20px;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .main-nav {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .main-nav ul {
+    flex-direction: row; 
+    text-align: center;
+    justify-content: center;
+  }
+
+  .main-nav li {
+    margin: 10px 200; 
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+}
