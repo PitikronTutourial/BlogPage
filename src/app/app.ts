@@ -8,6 +8,7 @@ import { Outtro } from './outtro/outtro';
 import { Member } from './member/member';
 import { InfoSection } from './info-section/info-section';
 import { Footer } from './footer/footer';
+import { Home} from './home/home';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ import { Footer } from './footer/footer';
     Outtro,
     Member,
     InfoSection,
-    Footer
+    Footer,
+    Home
   ],
   templateUrl: './app.html', 
   styleUrl: './app.css'     

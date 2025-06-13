@@ -26,6 +26,9 @@
   width: 280px; 
   text-align: left;
   transition: transform 0.3s ease;
+  text-decoration: none; 
+  color: inherit; 
+  display: block;
 }
 
 .card:hover {

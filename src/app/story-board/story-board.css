@@ -1,0 +1,132 @@
+.story-board-section {
+  padding: 80px 50px;
+  text-align: center;
+  background-color: #222; /* สีพื้นหลังเข้มตามรูป */
+  color: #fff;
+}
+
+.story-board-section h2 {
+  font-size: 40px;
+  margin-bottom: 50px;
+  color: #fff;
+}
+
+.story-board-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 คอลัมน์เท่าๆ กัน */
+  gap: 15px; /* ระยะห่างระหว่างรูปภาพ */
+  max-width: 900px; /* จำกัดความกว้างของ Grid */
+  margin: 0 auto 50px auto; /* จัดให้อยู่กึ่งกลางและมี margin ด้านล่าง */
+}
+
+.grid-item {
+  position: relative; /* สำหรับวาง overlay ของ lock */
+  width: 100%;
+  padding-bottom: 100%; /* ทำให้เป็นสี่เหลี่ยมจัตุรัส (height = width) */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.grid-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ครอบคลุมพื้นที่และตัดส่วนเกิน */
+  display: block; /* ลบช่องว่างใต้รูปภาพ */
+}
+
+.grid-item.locked .lock-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Overlay สีดำโปร่งแสง */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2; /* ให้อยู่เหนือรูปภาพ */
+  border-radius: 8px;
+}
+
+.grid-item.locked .lock-icon {
+  font-size: 40px; /* ขนาดไอคอนแม่กุญแจ */
+  color: #fff;
+  z-index: 3; /* ให้อยู่เหนือ overlay */
+  position: absolute; /* เพื่อให้ลอยอยู่บน overlay */
+  display: block;
+}
+
+.play-unlock-button {
+  background-color: #f0c040; /* สีปุ่มเหลือง */
+  color: #333;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* ระยะห่างจาก Grid */
+}
+
+.play-unlock-button:hover {
+  background-color: #e0b030; /* สีเข้มขึ้นเมื่อ hover */
+}
+
+
+/* Responsive adjustments for Story Board Section */
+@media (max-width: 992px) {
+  .story-board-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์บนแท็บเล็ต */
+    max-width: 680px;
+    gap: 12px;
+  }
+  .story-board-section h2 {
+    font-size: 35px;
+  }
+  .play-unlock-button {
+    font-size: 18px;
+    padding: 12px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .story-board-section {
+    padding: 50px 20px;
+  }
+  .story-board-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์บนมือถือ */
+    max-width: 450px; /* หรือ 90% ของหน้าจอ */
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .story-board-section h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-board-section {
+    padding: 40px 15px;
+  }
+  .story-board-grid {
+    grid-template-columns: repeat(2, 1fr); /* ยังคง 2 คอลัมน์ */
+    gap: 8px;
+    max-width: 100%;
+  }
+  .story-board-section h2 {
+    font-size: 28px;
+  }
+  .grid-item.locked .lock-icon {
+    font-size: 30px;
+  }
+  .play-unlock-button {
+    font-size: 16px;
+    padding: 10px 25px;
+  }
+}
