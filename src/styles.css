@@ -1,5 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-
 * {
   box-sizing: border-box; 
   margin: 0;
@@ -7,7 +5,8 @@
 }
 
 html {
-  font-size: 16px; 
+  font-size: 16px;
+  scroll-behavior: smooth; 
 }
 
 body {
@@ -22,4 +21,150 @@ section > *:first-child {
 }
 section > *:last-child {
     margin-bottom: 0;
+}
+
+
+
+.cdk-overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+
+  /* เพิ่ม blur effect */
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px); 
+}
+
+
+.custom-dialog-container {
+  border-radius: 15px !important; 
+  overflow: hidden; 
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* เพื่อป้องกัน horizontal scrollbar */
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+h2.mat-mdc-dialog-title {
+    cursor: pointer;
+    text-decoration: none; 
+    color: #333; 
+    transition: color 0.3s ease, text-decoration 0.3s ease; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}
+
+
+.link-icon {
+    font-size: 18px; 
+    margin-left: 8px; 
+    color: #888; 
+    transition: color 0.3s ease;
+}
+
+h2.mat-mdc-dialog-title:hover .link-icon {
+    color: #007bff; 
+}
+
+.image-viewer-dialog .mat-mdc-dialog-container {
+  max-width: 80vw !important;
+  max-height: 90vh !important;
+  padding: 0 !important;
+}
+
+/* src/styles.css */
+/* 1. จัดการ Dialog Container โดยรวม */
+.SCENCE.mat-mdc-dialog-container {
+    background-color: #000000 !important; /* พื้นหลังดำ */
+    padding: 0 !important; /* ลบ padding ทั้งหมดรอบนอก */
+    box-shadow: none !important; /* ลบเงา */
+    border-radius: 0px !important; /* ขอบคม (หรือ 8px ถ้าชอบมน) */
+
+    display: flex;
+    flex-direction: column; /* จัดเรียง Title, Content, Actions ในแนวตั้ง */
+    justify-content: space-between; /* กระจายช่องว่าง */
+    align-items: center; /* จัดกึ่งกลางแนวนอน */
+
+    max-width: 95vw !important; /* กำหนดขนาดสูงสุด */
+    max-height: 95vh !important;
+    width: auto !important; /* ให้ปรับขนาดตามเนื้อหา */
+    height: auto !important;
+    overflow: hidden !important; /* ซ่อน scrollbar ที่อาจเกิดขึ้น */
+}
+
+/* 2. จัดการ Title Bar */
+.SCENCE .mat-mdc-dialog-title {
+    color: #ffffff !important; /* ข้อความ Title สีขาว */
+    background-color: #000000 !important; /* พื้นหลัง Title Bar สีดำ */
+    padding: 16px 24px !important; /* Padding มาตรฐาน */
+    width: 100%; /* เต็มความกว้าง */
+    text-align: center; /* จัดกึ่งกลาง */
+    flex-shrink: 0; /* ไม่ให้ยุบ */
+
+    /* **สำคัญ: ลบเส้น/เงาใต้ Title** */
+    border-bottom: none !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important; /* บางครั้งมี margin-bottom ด้วย */
+}
+
+/* 3. จัดการ Content Area (ที่รูปภาพอยู่) */
+/* **นี่คือส่วนที่สำคัญที่สุดที่มักจะสร้างเส้นขาว** */
+.SCENCE mat-dialog-content {
+    /* **สำคัญมาก: ลบ padding และ border ที่อาจจะมาจาก Material Default** */
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    flex-grow: 1; /* ขยายเต็มพื้นที่ที่เหลือ */
+    display: flex; /* ใช้ Flexbox เพื่อจัดกึ่งกลางรูป */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* ซ่อนส่วนเกิน */
+    width: 100%; /* เต็มความกว้าง */
+    background-color: #000000 !important; /* พื้นหลังของ Content Area ก็เป็นสีดำ */
+}
+
+/* 4. จัดการรูปภาพภายใน Content Area */
+.SCENCE mat-dialog-content img {
+    max-width: 100% !important; /* รูปไม่เกินความกว้าง */
+    max-height: 100% !important; /* รูปไม่เกินความสูง */
+    object-fit: contain; /* ทำให้รูปพอดีกรอบไม่ถูกครอป */
+    display: block; /* ลบช่องว่าง */
+    border-radius: 0px; /* รูปภาพคม (หรือ 8px ถ้าอยากให้มน) */
+    border: none !important; /* ลบ border รอบรูป */
+    box-shadow: none !important; /* ลบ shadow รอบรูป */
+}
+
+/* 5. จัดการ Action Bar (ปุ่มปิด) */
+.SCENCE .mat-mdc-dialog-actions {
+    background-color: #000000 !important; 
+    padding: 16px 24px !important; 
+    width: 100%; 
+    box-sizing: border-box;
+    justify-content: flex-end; 
+    flex-shrink: 0; 
+    border-top: none !important;
+    box-shadow: none !important;
+    margin-top: 0 !important; 
+}
+
+/* 6. จัดการปุ่ม */
+.SCENCE .mat-mdc-button {
+    color: #000000 !important; /* ข้อความปุ่มสีขาว */
+    background-color: #ffffff !important; /* สีปุ่ม */
+    border: 1px solid #555 !important; /* ขอบปุ่ม */
+    
+}
+.SCENCE .mat-mdc-button:hover {
+    background-color: #b1b1b1 !important; 
 }

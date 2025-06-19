@@ -1,65 +1,13 @@
 <section class="story-board-section">
   <h2>Story board</h2>
   <div class="story-board-grid">
-    <div class="grid-item">
-      <img src="/assets/sb-frame-01.jpg" alt="Storyboard Frame 1">
-    </div>
-    <div class="grid-item locked">
-      <img src="/assets/sb-frame-02-locked.jpg" alt="Storyboard Frame 2 Locked">
-      <div class="lock-overlay"></div>
-      <span class="lock-icon">🔒</span>
-    </div>
-    <div class="grid-item">
-      <img src="/assets/sb-frame-03.jpg" alt="Storyboard Frame 3">
-    </div>
-    <div class="grid-item">
-      <img src="/assets/sb-frame-04.jpg" alt="Storyboard Frame 4">
-    </div>
-
-    <div class="grid-item">
-      <img src="/assets/sb-frame-05.jpg" alt="Storyboard Frame 5">
-    </div>
-    <div class="grid-item">
-      <img src="/assets/sb-frame-06.jpg" alt="Storyboard Frame 6">
-    </div>
-    <div class="grid-item locked">
-      <img src="/assets/sb-frame-07-locked.jpg" alt="Storyboard Frame 7 Locked">
-      <div class="lock-overlay"></div>
-      <span class="lock-icon">🔒</span>
-    </div>
-    <div class="grid-item">
-      <img src="/assets/sb-frame-08.jpg" alt="Storyboard Frame 8">
-    </div>
-
-    <div class="grid-item">
-      <img src="/assets/sb-frame-09.jpg" alt="Storyboard Frame 9">
-    </div>
-    <div class="grid-item">
-      <img src="/assets/sb-frame-10.jpg" alt="Storyboard Frame 10">
-    </div>
-    <div class="grid-item">
-      <img src="/assets/sb-frame-11.jpg" alt="Storyboard Frame 11">
-    </div>
-    <div class="grid-item locked">
-      <img src="/assets/sb-frame-12-locked.jpg" alt="Storyboard Frame 12 Locked">
-      <div class="lock-overlay"></div>
-      <span class="lock-icon">🔒</span>
-    </div>
-
-    <div class="grid-item">
-      <img src="/assets/sb-frame-13.jpg" alt="Storyboard Frame 13">
-    </div>
-    <div class="grid-item locked">
-      <img src="/assets/sb-frame-14-locked.jpg" alt="Storyboard Frame 14 Locked">
-      <div class="lock-overlay"></div>
-      <span class="lock-icon">🔒</span>
-    </div>
-    <div class="grid-item">
-      <img src="/assets/sb-frame-15.jpg" alt="Storyboard Frame 15">
-    </div>
-    <div class="grid-item">
-      <img src="/assets/sb-frame-16.jpg" alt="Storyboard Frame 16">
+    <div class="grid-item"
+         [class.locked]="frame.isLocked"  *ngFor="let frame of storyboardFrames"
+         (click)="onFrameClick(frame)">   <img [src]="frame.imageUrl" [alt]="frame.altText"> <ng-container *ngIf="frame.isLocked">
+        <div class="lock-overlay"></div>
+        <span class="lock-icon">🔒</span>
+      </ng-container>
     </div>
   </div>
-  <button class="play-unlock-button">PLAY TO UNLOCK</button>
+  <button class="play-unlock-button" (click)="playToUnlock()">UNLOCK ALL</button>
 </section>

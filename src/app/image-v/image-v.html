@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{ currentDisplayFrame.title ? currentDisplayFrame.title : 'Image Viewer' }}</h2>
+
+<mat-dialog-content>
+  <img [src]="currentDisplayFrame.imageUrl" [alt]="currentDisplayFrame.altText">
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNext()" [disabled]="!hasNextFrame">
+    {{ nextFrameIsLocked ? 'Unlock Next' : 'Next' }}
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+  <button mat-button (click)="onClose()">Close</button>
+</mat-dialog-actions>

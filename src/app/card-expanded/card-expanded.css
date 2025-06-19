@@ -1,0 +1,35 @@
+/* src/app/card-expanded/card-expanded.component.css */
+
+/* Style สำหรับรูปภาพภายใน Pop-up Dialog */
+.mat-mdc-dialog-content img {
+    max-width: 100%;    /* ให้กว้างสูงสุด 100% ของ parent */
+    width: 100%;        /* บังคับให้กว้าง 100% ของ parent */
+    height: auto;       /* รักษาอัตราส่วน */
+    display: block;     /* ทำให้รูปภาพเป็น block element */
+    /* margin: 15px auto;  <-- ลองเอา margin auto ออกไปก่อน เพื่อดูว่ามันเต็มไหม */
+    margin-top: 15px;   /* เหลือแต่ margin-top ถ้าต้องการระยะห่างจากข้อความด้านบน */
+    margin-bottom: 15px; /* เหลือแต่ margin-bottom ถ้าต้องการระยะห่างจากข้อความด้านล่าง */
+
+    max-height: 100%;  /* ปรับค่านี้ตามความเหมาะสม */
+    object-fit: cover;  /* **ลองเปลี่ยนเป็น cover** เพื่อบังคับให้เต็มพื้นที่และครอบคลุม */
+    /* ถ้าใช้ cover แล้วรูปถูก crop มากไป ให้กลับไป contain และลองปรับ padding แทน */
+    border-radius: 4px;
+}
+
+/* คุณอาจจะต้องปรับ padding ของ mat-dialog-content ด้วยเพื่อให้เนื้อหามีพื้นที่ */
+.mat-mdc-dialog-content {
+    /* **สำคัญ:** รีเซ็ต padding หรือกำหนด padding ที่คุณต้องการจริงๆ */
+    padding: 0 24px; /* **เพิ่ม !important เพื่อ override Material default padding** */
+                           /* หากต้องการ padding ด้านข้าง ให้ใช้ padding-left/right แยกต่างหาก */
+    
+    width: 100%; /* บังคับให้ mat-dialog-content กว้าง 100% */
+    box-sizing: border-box; /* สำคัญเพื่อให้ padding นับรวมใน width */
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+    
+    align-items: stretch; /* บังคับให้ลูก Element ขยายเต็มความกว้าง */
+    /* หรือลอง flex-start ถ้า stretch ไม่ทำงานตามที่คาดหวัง และใส่ width: 100% ใน img */
+}

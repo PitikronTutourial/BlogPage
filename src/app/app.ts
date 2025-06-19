@@ -1,14 +1,8 @@
-// src/app/app.component.ts
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core'; // เพิ่ม ElementRef, ViewChild, AfterViewInit (ถ้าจำเป็น)
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Header } from './header/header'; 
-import { Welcome } from './welcome/welcome';
-import { Outtro } from './outtro/outtro';
-import { Member } from './member/member';
-import { InfoSection } from './info-section/info-section';
+import { Header } from './header/header';
 import { Footer } from './footer/footer';
-import { Home} from './home/home';
 
 @Component({
   selector: 'app-root',
@@ -17,16 +11,23 @@ import { Home} from './home/home';
     CommonModule,
     RouterOutlet,
     Header,
-    Welcome,
-    Outtro,
-    Member,
-    InfoSection,
     Footer,
-    Home
   ],
-  templateUrl: './app.html', 
-  styleUrl: './app.css'     
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class AppComponent {
+export class AppComponent { 
   title = 'blogPage';
+
+
+  scroll(sectionId: string): void {
+    console.log(`Attempting to scroll to: ${sectionId}`); 
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      console.log(`Scrolled to: ${sectionId}`); 
+    } else {
+      console.error(`Element with ID '${sectionId}' not found!`); 
+    }
+  }
 }

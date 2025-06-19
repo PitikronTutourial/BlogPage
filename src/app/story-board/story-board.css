@@ -1,31 +1,38 @@
 .story-board-section {
   padding: 80px 50px;
   text-align: center;
-  background-color: #222; /* สีพื้นหลังเข้มตามรูป */
-  color: #fff;
+  background-color: #222;
+  color: #ffffff;
 }
 
 .story-board-section h2 {
   font-size: 40px;
   margin-bottom: 50px;
-  color: #fff;
+  color: #ffffff;
 }
 
 .story-board-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 คอลัมน์เท่าๆ กัน */
-  gap: 15px; /* ระยะห่างระหว่างรูปภาพ */
-  max-width: 900px; /* จำกัดความกว้างของ Grid */
-  margin: 0 auto 50px auto; /* จัดให้อยู่กึ่งกลางและมี margin ด้านล่าง */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 900px;
+  margin: 0 auto 50px auto;
 }
 
 .grid-item {
-  position: relative; /* สำหรับวาง overlay ของ lock */
+  position: relative;
   width: 100%;
-  padding-bottom: 100%; /* ทำให้เป็นสี่เหลี่ยมจัตุรัส (height = width) */
+  padding-bottom: 100%; /* ทำให้เป็นสี่เหลี่ยมจัตุรัส */
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* cursor: pointer; (จะเพิ่มเมื่อไม่ locked) */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover:not(.locked) { /* เพิ่ม :not(.locked) เพื่อไม่ให้ hover effect บน locked item */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .grid-item img {
@@ -34,8 +41,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ครอบคลุมพื้นที่และตัดส่วนเกิน */
-  display: block; /* ลบช่องว่างใต้รูปภาพ */
+  object-fit: cover;
+  display: block;
+}
+
+/* Style สำหรับสถานะ Locked */
+.grid-item.locked {
+  cursor: not-allowed; /* เปลี่ยน Cursor เมื่อ Locked */
+  pointer-events: none; 
+  opacity: 0.7; /* ทำให้ดูจางลงเล็กน้อย */
+}
+
+/* ใส่ filter และ overlay บน locked item */
+.grid-item.locked img {
+  filter: grayscale(100%) blur(2px); /* ทำให้รูปภาพเป็นขาวดำและเบลอ */
 }
 
 .grid-item.locked .lock-overlay {
@@ -44,24 +63,24 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Overlay สีดำโปร่งแสง */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2; /* ให้อยู่เหนือรูปภาพ */
+  z-index: 2;
   border-radius: 8px;
 }
 
 .grid-item.locked .lock-icon {
-  font-size: 40px; /* ขนาดไอคอนแม่กุญแจ */
-  color: #fff;
-  z-index: 3; /* ให้อยู่เหนือ overlay */
-  position: absolute; /* เพื่อให้ลอยอยู่บน overlay */
+  font-size: 40px;
+  color: #ffffff;
+  z-index: 3;
+  position: absolute;
   display: block;
 }
 
 .play-unlock-button {
-  background-color: #f0c040; /* สีปุ่มเหลือง */
+  background-color: #f0c040;
   color: #333;
   padding: 15px 35px;
   border: none;
@@ -70,11 +89,11 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px; /* ระยะห่างจาก Grid */
+  margin-top: 20px;
 }
 
 .play-unlock-button:hover {
-  background-color: #e0b030; /* สีเข้มขึ้นเมื่อ hover */
+  background-color: #e0b030;
 }
 
 
@@ -130,3 +149,4 @@
     padding: 10px 25px;
   }
 }
+

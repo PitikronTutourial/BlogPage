@@ -1,0 +1,14 @@
+<div>
+    <h2 mat-dialog-title (click)="navigateToPageFromDialog(data.path)" style="cursor: pointer;">
+    {{ data.title }}
+    <mat-icon class="link-icon">open_in_new</mat-icon> 
+    </h2>
+    <mat-dialog-content>
+        <p>{{ data.fullDescription }}</p>
+        <img *ngIf="data.imageUrl" [src]="data.imageUrl" alt="Card Image">
+        <p>More details about this exciting content!</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button (click)="Onclose()">Close</button>
+    </mat-dialog-actions>
+</div>

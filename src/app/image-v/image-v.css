@@ -1,0 +1,11 @@
+/* src/app/image-v/image-v.css */
+mat-dialog-content {
+  padding: 0px !important; /* ลบ padding ของ mat-dialog-content */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
